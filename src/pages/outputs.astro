@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { REPOSITORIES, SITE } from '../site';
+
+const outputJsonLd = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareSourceCode',
+		name: 'EoS Generation',
+		version: '1.0.0',
+		programmingLanguage: 'Python',
+		codeRepository: REPOSITORIES.eosGeneration,
+		url: REPOSITORIES.eosGenerationRelease,
+		license: 'https://opensource.org/license/mit',
+		author: { '@id': `${SITE.url}/#person` },
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Dataset',
+		name: 'BSk24 fixed-geometry signed-amplitude campaign data',
+		version: '1.0.0',
+		url: REPOSITORIES.eosCampaignRelease,
+		license: 'https://creativecommons.org/licenses/by/4.0/',
+		creator: { '@id': `${SITE.url}/#person` },
+		distribution: {
+			'@type': 'DataDownload',
+			encodingFormat: 'application/zip',
+			contentUrl:
+				'https://github.com/PapathanasiouIoannis/EoS-generation/releases/download/bsk24-campaign-data-v1.0.0/bsk24-final-amplitude-campaign-v1-derived-evidence.zip',
+		},
+	},
+];
+---
+
+<BaseLayout
+	title="Public outputs — Ioannis Papathanasiou"
+	description="Versioned software, data, thesis materials, and early-stage scientific tooling by Ioannis Papathanasiou, with status stated explicitly."
+	canonicalPath="/outputs/"
+	jsonLd={outputJsonLd}
+>
+	<header class="shell page-header">
+		<p class="eyebrow">Software, data, and thesis</p>
+		<h1>Public outputs.</h1>
+		<p class="page-lede">
+			Public research and software artifacts, with their status and scientific scope shown
+			explicitly. A submitted manuscript is not listed as a publication until a public record is
+			available.
+		</p>
+	</header>
+
+	<section class="shell output-list" aria-label="Public output list">
+		<article class="output-item">
+			<p class="output-type">Software · v1.0.0</p>
+			<div>
+				<h2>EoS Generation</h2>
+				<p>
+					A focused Python implementation of controlled BSk24 sound-speed deformations,
+					thermodynamic assessment, reconstruction, and optional TOV/tidal calculations. MIT
+					licensed, tested, documented, and supplied with citation metadata.
+				</p>
+				<div class="link-row">
+					<a class="text-link" href={REPOSITORIES.eosGenerationRelease}>Release <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href={REPOSITORIES.eosGeneration}>Repository <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+		</article>
+
+		<article class="output-item">
+			<p class="output-type">Data · v1.0.0</p>
+			<div>
+				<h2>BSk24 signed-amplitude campaign evidence</h2>
+				<p>
+					Analysis-ready tables, figures, campaign declarations, provenance records, checksums,
+					and sanitized calculation/reporting source. Released data and figures are CC BY 4.0;
+					released code is MIT licensed.
+				</p>
+				<div class="link-row">
+					<a class="text-link" href={REPOSITORIES.eosCampaignRelease}>Data release <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href="/work/bsk24-sound-speed-deformations/">Read the case study <span aria-hidden="true">→</span></a>
+				</div>
+			</div>
+		</article>
+
+		<article class="output-item">
+			<p class="output-type">Undergraduate thesis · <time datetime="2026-02">2026</time></p>
+			<div>
+				<h2>Machine Learning Classification of Neutron Star Composition</h2>
+				<p>
+					A synthetic compact-star model-discrimination study examined in February 2026 (10/10).
+					The submitted snapshot and the later methodological audit are linked separately so their
+					different status is clear.
+				</p>
+				<div class="link-row">
+					<a class="text-link" href={REPOSITORIES.thesisRecord}>Thesis record <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href={REPOSITORIES.thesisSnapshot}>Submitted snapshot <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href={REPOSITORIES.thesisAudit}>Risk audit <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+		</article>
+
+		<article class="output-item">
+			<p class="output-type">Software · alpha</p>
+			<div>
+				<h2>Neutron-star EoS toolkit</h2>
+				<p>
+					An early-stage MIT-licensed repository for analytical, CSV, and cold one-dimensional
+					CompOSE inputs and continuous source-boundary TOV backgrounds. It has no formal release
+					or public benchmark result packet yet.
+				</p>
+				<div class="link-row">
+					<a class="text-link" href={REPOSITORIES.eosToolkit}>Repository <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href="/work/neutron-star-eos-toolkit/">Scope and limitations <span aria-hidden="true">→</span></a>
+				</div>
+			</div>
+		</article>
+	</section>
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { SITE } from '../site';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonicalPath?: string;
+	ogImage?: string;
+	ogImageAlt?: string;
+	noindex?: boolean;
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+	title = SITE.title,
+	description = SITE.description,
+	canonicalPath = Astro.url.pathname,
+	ogImage,
+	ogImageAlt,
+	noindex = false,
+	jsonLd,
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, SITE.url).toString();
+const absoluteImage = ogImage ? new URL(ogImage, SITE.url).toString() : undefined;
+const structuredData = jsonLd
+	? JSON.stringify(jsonLd).replaceAll('<', '\\u003c')
+	: undefined;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#f3efe7" />
+		<meta name="color-scheme" content="light" />
+		<meta name="description" content={description} />
+		{noindex && <meta name="robots" content="noindex" />}
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={SITE.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		{absoluteImage && <meta property="og:image" content={absoluteImage} />}
+		{absoluteImage && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
+		{absoluteImage && <meta property="og:image:width" content="1200" />}
+		{absoluteImage && <meta property="og:image:height" content="630" />}
+
+		<meta name="twitter:card" content={absoluteImage ? 'summary_large_image' : 'summary'} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		{absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
+		{absoluteImage && ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt} />}
+
+		<title>{title}</title>
+		{structuredData && <script type="application/ld+json" set:html={structuredData} is:inline />}
+		<slot name="head" />
+	</head>
+	<body>
+		<a class="skip-link" href="#main-content">Skip to main content</a>
+		<SiteHeader />
+		<main id="main-content">
+			<slot />
+		</main>
+		<SiteFooter />
+	</body>
+</html>

@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { REPOSITORIES, SITE } from '../site';
+---
+
+<BaseLayout
+	title="Curriculum vitae — Ioannis Papathanasiou"
+	description="Print-ready curriculum vitae for Ioannis Papathanasiou, physics graduate and early-career computational physicist."
+	canonicalPath="/cv/"
+>
+	<div class="shell cv-page">
+		<p class="print-note">
+			This CV is maintained as accessible HTML. Use your browser’s Print command to save a clean
+			PDF; navigation and this note are removed automatically.
+		</p>
+
+		<header class="cv-header">
+			<div>
+				<p class="section-kicker">Curriculum vitae · updated August 2026</p>
+				<h1>Ioannis Papathanasiou</h1>
+				<p>Physics graduate · computational physicist</p>
+			</div>
+			<address class="cv-contact">
+				<span>{SITE.location}</span>
+				<a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+				<a href={SITE.github}>github.com/PapathanasiouIoannis</a>
+				<a href={SITE.url}>papathanasiouioannis.github.io</a>
+			</address>
+		</header>
+
+		<section class="cv-section" aria-labelledby="cv-profile">
+			<h2 id="cv-profile">Profile</h2>
+			<div>
+				<p>
+					Early-career computational physicist working on dense-matter equations of state,
+					relativistic stellar structure, and reproducible scientific software.
+				</p>
+			</div>
+		</section>
+
+		<section class="cv-section" aria-labelledby="cv-research">
+			<h2 id="cv-research">Research work</h2>
+			<div>
+				<article class="cv-entry">
+					<h3>Controlled BSk24 sound-speed deformations</h3>
+					<p class="cv-entry-meta">Methods and software · 2026–present</p>
+					<p>
+						Developed a fail-closed workflow for smooth sound-speed modifications, effective
+						cold-barotrope reconstruction, and optional TOV/tidal calculations. Released
+						versioned software and checksummed campaign evidence; related manuscript submitted.
+					</p>
+				</article>
+				<article class="cv-entry">
+					<h3>Machine Learning Classification of Neutron Star Composition</h3>
+					<p class="cv-entry-meta">Undergraduate thesis · examined February 2026</p>
+					<p>
+						Built a synthetic equation-of-state, stellar-structure, and machine-learning workflow
+						to study restricted compact-star model discrimination. A subsequent audit narrowed the
+						defensible classification scope and documented leakage, provenance, and
+						generalization risks.
+					</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="cv-section" aria-labelledby="cv-software">
+			<h2 id="cv-software">Selected software</h2>
+			<div>
+				<article class="cv-entry">
+					<h3><a href={REPOSITORIES.eosGenerationRelease}>EoS Generation, v1.0.0</a></h3>
+					<p>Author and maintainer · Python · MIT licensed.</p>
+				</article>
+				<article class="cv-entry">
+					<h3><a href={REPOSITORIES.eosToolkit}>Neutron-star EoS toolkit</a></h3>
+					<p>Early-stage scientific software · Python · MIT licensed · no formal release.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="cv-section" aria-labelledby="cv-education">
+			<h2 id="cv-education">Education</h2>
+			<div class="cv-entry">
+				<h3>Degree in Physics, Aristotle University of Thessaloniki</h3>
+				<p class="cv-entry-meta">2021–2026 · 240 ECTS · 8.46/10 (“Very Good”)</p>
+				<p>
+					Undergraduate thesis: <em>Machine Learning Classification of Neutron Star Composition</em>
+					(10/10). Supervisors: Charalampos Moustakidis and Theodoros Diakonidis.
+				</p>
+			</div>
+		</section>
+
+		<section class="cv-section" aria-labelledby="cv-methods">
+			<h2 id="cv-methods">Methods and tools</h2>
+			<div>
+				<p>
+					Equation-of-state modelling; TOV and tidal calculations; numerical ODE integration;
+					supervised learning with grouped validation; reproducible workflows and provenance.
+				</p>
+				<p>
+					Python, NumPy, SciPy, pandas, scikit-learn, Jupyter, pytest, Git, and LaTeX.
+				</p>
+			</div>
+		</section>
+
+		<section class="cv-section" aria-labelledby="cv-experience">
+			<h2 id="cv-experience">Additional experience</h2>
+			<div class="cv-entry">
+				<h3>Store operations specialist, IMIA Print Shop</h3>
+				<p class="cv-entry-meta">Thessaloniki · June 2019–present</p>
+				<p>
+					Customer-facing production and order coordination; developed small Python utilities
+					for batch printing and label generation.
+				</p>
+			</div>
+		</section>
+	</div>
+</BaseLayout>

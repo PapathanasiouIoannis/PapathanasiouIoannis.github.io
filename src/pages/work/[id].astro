@@ -1,0 +1,156 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ResearchFigure from '../../components/ResearchFigure.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../site';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('work');
+	return entries.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+interface Props {
+	entry: CollectionEntry<'work'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const isBsk24 = entry.id === 'bsk24-sound-speed-deformations';
+const isThesis = entry.id === 'compact-star-model-discrimination';
+const isToolkit = entry.id === 'neutron-star-eos-toolkit';
+const kindLabels = {
+	research: 'Research method',
+	thesis: 'Undergraduate thesis',
+	software: 'Scientific software',
+};
+
+const personNode = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	'@id': `${SITE.url}/#person`,
+	name: SITE.name,
+	url: SITE.url,
+	sameAs: [SITE.github, SITE.linkedin],
+};
+
+let jsonLd: Record<string, unknown>[] | undefined;
+
+if (isBsk24) {
+	jsonLd = [
+		personNode,
+		{
+			'@context': 'https://schema.org',
+			'@type': 'SoftwareSourceCode',
+			name: 'EoS Generation',
+			description: entry.data.description,
+			version: '1.0.0',
+			programmingLanguage: 'Python',
+			codeRepository: 'https://github.com/PapathanasiouIoannis/EoS-generation',
+			url: 'https://github.com/PapathanasiouIoannis/EoS-generation/releases/tag/v1.0.0',
+			license: 'https://opensource.org/license/mit',
+			author: { '@id': `${SITE.url}/#person` },
+		},
+		{
+			'@context': 'https://schema.org',
+			'@type': 'Dataset',
+			name: 'BSk24 fixed-geometry signed-amplitude campaign data',
+			description:
+				'Versioned analysis tables, figures, provenance records, checksums, and reproducibility source for the controlled BSk24 deformation campaign.',
+			version: '1.0.0',
+			url: 'https://github.com/PapathanasiouIoannis/EoS-generation/releases/tag/bsk24-campaign-data-v1.0.0',
+			license: 'https://creativecommons.org/licenses/by/4.0/',
+			creator: { '@id': `${SITE.url}/#person` },
+			distribution: {
+				'@type': 'DataDownload',
+				encodingFormat: 'application/zip',
+				contentUrl:
+					'https://github.com/PapathanasiouIoannis/EoS-generation/releases/download/bsk24-campaign-data-v1.0.0/bsk24-final-amplitude-campaign-v1-derived-evidence.zip',
+			},
+		},
+	];
+} else if (isThesis) {
+	jsonLd = [
+		personNode,
+		{
+			'@context': 'https://schema.org',
+			'@type': 'CreativeWork',
+			name: 'Machine Learning Classification of Neutron Star Composition',
+			description: entry.data.description,
+			genre: 'Undergraduate thesis',
+			dateCreated: '2026',
+			inLanguage: 'en',
+			educationalLevel: 'Undergraduate',
+			author: { '@id': `${SITE.url}/#person` },
+			url: 'https://www.researchgate.net/publication/400555533_Machine_Learning_Classification_of_Neutron_Star_Composition',
+		},
+	];
+} else if (isToolkit) {
+	jsonLd = [
+		personNode,
+		{
+			'@context': 'https://schema.org',
+			'@type': 'SoftwareSourceCode',
+			name: 'Neutron-star EoS toolkit',
+			description: entry.data.description,
+			programmingLanguage: 'Python',
+			codeRepository: 'https://github.com/PapathanasiouIoannis/neutron-star-eos-toolkit',
+			url: 'https://github.com/PapathanasiouIoannis/neutron-star-eos-toolkit',
+			license: 'https://opensource.org/license/mit',
+			author: { '@id': `${SITE.url}/#person` },
+		},
+	];
+}
+---
+
+<BaseLayout
+	title={`${entry.data.shortTitle} — Ioannis Papathanasiou`}
+	description={entry.data.description}
+	canonicalPath={`/work/${entry.id}/`}
+	jsonLd={jsonLd}
+	ogImage={isBsk24 ? '/images/bsk24-thermodynamic-propagation-social.jpg' : undefined}
+	ogImageAlt={isBsk24 ? 'Three plots show how negative and positive BSk24 sound-speed deformations accumulate into pressure responses.' : undefined}
+>
+	<article>
+		<header class="shell project-hero">
+			<p class="eyebrow">{entry.data.eyebrow}</p>
+			<h1>{entry.data.title}</h1>
+			<p class="project-deck">{entry.data.description}</p>
+			<dl class="project-meta">
+				<div>
+					<dt>Type</dt>
+					<dd>{kindLabels[entry.data.kind]}</dd>
+				</div>
+				<div>
+					<dt>Period</dt>
+					<dd>{entry.data.period}</dd>
+				</div>
+				<div>
+					<dt>Status</dt>
+					<dd>{entry.data.status}</dd>
+				</div>
+			</dl>
+		</header>
+
+		{isBsk24 && <div class="shell"><ResearchFigure /></div>}
+
+		<div class="shell project-body">
+			<aside class="project-sidebar" aria-labelledby="project-links-title">
+				<h2 id="project-links-title">Project links</h2>
+				<ul class="project-links">
+					{
+						entry.data.links.map((link) => (
+							<li>
+								<a href={link.href}>
+									{link.label} <span aria-hidden="true">↗</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</aside>
+			<div class="prose">
+				<Content />
+			</div>
+		</div>
+	</article>
+</BaseLayout>

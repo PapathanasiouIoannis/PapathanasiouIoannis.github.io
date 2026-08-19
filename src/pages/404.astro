@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Page not found — Ioannis Papathanasiou"
+	description="The requested page could not be found."
+	canonicalPath="/404/"
+	noindex
+>
+	<section class="shell error-page">
+		<div>
+			<p class="eyebrow">Page not found</p>
+			<h1>404</h1>
+			<p>The requested page is not part of this site, or its address has changed.</p>
+			<div class="link-row" style="justify-content: center;">
+				<a class="button-link" href="/">Return home</a>
+				<a class="button-link secondary" href="/work/">Browse work</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

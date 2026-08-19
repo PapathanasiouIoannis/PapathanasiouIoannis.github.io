@@ -1,0 +1,15 @@
+{
+  "name": "Ioannis Papathanasiou — Computational physicist",
+  "short_name": "Ioannis Papathanasiou",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f3efe7",
+  "theme_color": "#f3efe7",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

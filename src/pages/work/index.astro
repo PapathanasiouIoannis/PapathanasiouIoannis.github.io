@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+	title="Selected work — Ioannis Papathanasiou"
+	description="Selected research and scientific software on neutron-star equations of state, stellar structure, and careful computational validation."
+	canonicalPath="/work/"
+>
+	<header class="shell page-header">
+		<p class="eyebrow">Research and scientific software</p>
+		<h1>Selected work, with scope attached.</h1>
+		<p class="page-lede">
+			These are the projects that best represent my current scientific direction. Each entry
+			separates demonstrated work, present maturity, and important limitations; coursework and
+			unmodified forks are intentionally omitted.
+		</p>
+	</header>
+
+	<section class="shell project-list" aria-label="Project list">
+		{
+			work.map((entry, index) => (
+				<article class="project-row">
+					<span class="project-row-number" aria-hidden="true">
+						{String(index + 1).padStart(2, '0')}
+					</span>
+					<div>
+						<p class="section-kicker">{entry.data.eyebrow} · {entry.data.period}</p>
+						<h2>{entry.data.shortTitle}</h2>
+						<p>{entry.data.description}</p>
+					</div>
+					<div class="project-row-aside">
+						<p class="status">{entry.data.status}</p>
+						<ul class="tag-list" aria-label="Methods and topics">
+							{entry.data.tags.map((tag) => <li>{tag}</li>)}
+						</ul>
+						<a class="text-link" href={`/work/${entry.id}/`}>
+							Read case study <span aria-hidden="true">→</span>
+						</a>
+					</div>
+				</article>
+			))
+		}
+	</section>
+</BaseLayout>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://papathanasiouioannis.github.io/sitemap-index.xml

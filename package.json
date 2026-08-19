@@ -1,0 +1,27 @@
+{
+  "name": "papathanasiouioannis.github.io",
+  "type": "module",
+  "private": true,
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check --minimumFailingSeverity warning",
+    "validate:html": "html-validate \"dist/**/*.html\"",
+    "verify": "npm run check && npm run build && npm run validate:html",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "html-validate": "^11.8.0",
+    "typescript": "^6.0.3"
+  }
+}
