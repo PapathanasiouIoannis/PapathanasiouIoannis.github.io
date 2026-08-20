@@ -3,7 +3,7 @@ title: Controlled sound-speed deformations of analytical BSk24
 shortTitle: Controlled BSk24 deformations
 description: A governed workflow for changing the sound speed smoothly, rejecting thermodynamically inadmissible proposals, and tracing accepted cases to stellar observables.
 eyebrow: Methods and software
-status: Software and campaign data released; manuscript submitted
+status: Software and campaign data released; manuscript in preparation
 period: 2026–present
 order: 1
 featured: true
@@ -44,7 +44,7 @@ The maintained package and the historical campaign driver are identified separat
 
 ## Current status
 
-Software v1.0.0 and campaign data v1.0.0 are public. The campaign release includes analysis-ready tables, figures, provenance records, checksums, and a sanitized source capsule. A related manuscript has been submitted separately; there is not yet a public preprint or peer-reviewed publication to cite.
+Software v1.0.0 and campaign data v1.0.0 are public. The campaign release includes analysis-ready tables, figures, provenance records, checksums, and a sanitized source capsule. A related manuscript is in preparation and has not yet been submitted or posted as a preprint.
 
 > **Scientific boundary.** The released campaign concerns one analytical BSk24 baseline and one fixed deformation construction. The reconstruction is an effective one-fluid description. It does not establish microscopic composition, species chemical potentials, beta equilibrium, a phase transition, observational preference, or a universal response.
 
