@@ -1,0 +1,74 @@
+---
+import { Picture } from 'astro:assets';
+import geometryFigure from '../assets/realized-deformation-geometry.webp';
+import { REPOSITORIES } from '../site';
+
+const licenseUrl = 'https://creativecommons.org/licenses/by/4.0/';
+---
+
+<section class="section research-throughline" aria-labelledby="research-throughline-title">
+	<div class="shell">
+		<div class="section-heading compact-heading">
+			<div>
+				<p class="section-kicker">Research through-line</p>
+				<h2 id="research-throughline-title">Trace one change across scales.</h2>
+			</div>
+			<p>
+				My current work asks how a controlled change in a dense-matter model survives
+				thermodynamic assessment and appears in macroscopic compact-star observables.
+			</p>
+		</div>
+
+		<div class="scientific-plate">
+			<figure class="plate-figure">
+				<Picture
+					src={geometryFigure}
+					formats={['avif', 'webp']}
+					widths={[720, 1080, 1500]}
+					sizes="(max-width: 860px) calc(100vw - 2rem), 68vw"
+					alt="Four-panel scientific figure defining the BSk24 deformation geometry: a Gaussian is introduced through a smooth window, signed amplitudes change the squared sound speed, and representative raw profiles remain bounded by the causal limit."
+					loading="lazy"
+					decoding="async"
+				/>
+				<figcaption>
+					Realized deformation geometry for the fixed BSk24 campaign. This is a controlled
+					effective deformation, not a microscopic composition model. Figure: Ioannis
+					Papathanasiou, <a href={REPOSITORIES.eosCampaignRelease}>campaign data v1.0.0</a>,{' '}
+					<a href={licenseUrl}>CC BY 4.0</a>; web-optimized from the released PDF with
+					scientific content unchanged.
+				</figcaption>
+			</figure>
+
+			<div class="plate-copy">
+				<p class="data-label">Current method · analytical BSk24</p>
+				<h3>A controlled perturbation with an auditable path.</h3>
+				<ol class="trajectory-list">
+					<li>
+						<span aria-hidden="true">01</span>
+						<div>
+							<strong>Define</strong>
+							<p>Introduce a local signed sound-speed change above a retained anchor.</p>
+						</div>
+					</li>
+					<li>
+						<span aria-hidden="true">02</span>
+						<div>
+							<strong>Assess</strong>
+							<p>Reject inadmissible raw proposals before any reconstruction or stellar work.</p>
+						</div>
+					</li>
+					<li>
+						<span aria-hidden="true">03</span>
+						<div>
+							<strong>Propagate</strong>
+							<p>Carry accepted cases into one-fluid thermodynamics, structure, and tides.</p>
+						</div>
+					</li>
+				</ol>
+				<a class="text-link" href="/work/bsk24-sound-speed-deformations/">
+					See the complete evidence trail <span aria-hidden="true">→</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

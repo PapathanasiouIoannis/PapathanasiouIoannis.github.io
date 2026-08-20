@@ -11,7 +11,8 @@
     "build": "astro build",
     "check": "astro check --minimumFailingSeverity warning",
     "validate:html": "html-validate \"dist/**/*.html\"",
-    "verify": "npm run check && npm run build && npm run validate:html",
+    "validate:site": "node scripts/validate-built-site.mjs",
+    "verify": "npm run check && npm run build && npm run validate:html && npm run validate:site",
     "preview": "astro preview",
     "astro": "astro"
   },

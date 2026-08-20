@@ -30,6 +30,8 @@ My undergraduate thesis explored whether synthetic mass–radius and tidal-defor
 
 It was an investigation of the neutron-star inverse problem under a synthetic model design—not an observational measurement of stellar composition.
 
+The classifier was a probe of a defined synthetic distinction, not the scientific object in its own right.
+
 ## Work completed
 
 Under supervision, I built an end-to-end computational workflow for equation-of-state ensembles, TOV and tidal calculations, feature construction, Random Forest classification, and grouped validation. The thesis was examined in February 2026 as *Machine Learning Classification of Neutron Star Composition* and received 10/10.
@@ -38,7 +40,7 @@ The submitted-version tag preserves the thesis-era code. The current repository 
 
 ## What the later audit changed
 
-A post-thesis redevelopment examined leakage, provenance, validation units, and scientific scope more critically. Its controlled pair experiment currently supports only APR-1-surrogate versus fixed-CFL4 discrimination. With one baseline per class and correlated amplitude variants, class and baseline identity are confounded.
+A post-thesis redevelopment examined leakage, provenance, validation units, and scientific scope more critically. The controlled comparison currently distinguishes one hadronic surrogate from one fixed quark-matter baseline. Because each class has only one independent baseline, class label and baseline identity remain confounded.
 
 Row-level classifier performance in that setting cannot establish general hadronic-versus-quark discrimination. A synthetic Gaussian error model also cannot demonstrate observational generalization, calibrated astrophysical probabilities, or performance on unseen equation-of-state families.
 
@@ -48,4 +50,4 @@ Row-level classifier performance in that setting cannot establish general hadron
 
 The most useful outcome is methodological. Validation units must respect equation-of-state family and parameter-sweep structure; effective sample size is governed by independent physical groups rather than rows; and phase-general claims require multiple independent baselines and representative observational validation.
 
-That audit is part of the work, not an embarrassment to hide. It provides a clearer account of which conclusions survive and which do not.
+The audit is part of the scientific record: it identifies which conclusions survive and which do not.

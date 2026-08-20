@@ -1,7 +1,7 @@
 ---
 title: Neutron-star equation-of-state toolkit
 shortTitle: Neutron-star EoS toolkit
-description: Early-stage software for inspecting analytical, CSV, and cold one-dimensional CompOSE inputs and calculating continuous source-boundary TOV backgrounds when supported.
+description: Early-stage software for loading analytical, tabulated, and one-dimensional CompOSE equations of state, reporting source capabilities, and computing continuous TOV backgrounds without silently extending an input beyond its declared boundary.
 eyebrow: Scientific software
 status: Alpha repository; no formal release
 period: 2026–present

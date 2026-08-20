@@ -1,8 +1,9 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
-import ResearchFigure from '../../components/ResearchFigure.astro';
+import Bsk24ResearchStory from '../../components/Bsk24ResearchStory.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SITE } from '../../site';
+import { PERSON_JSON_LD } from '../../structuredData';
 
 export async function getStaticPaths() {
 	const entries = await getCollection('work');
@@ -24,20 +25,11 @@ const kindLabels = {
 	software: 'Scientific software',
 };
 
-const personNode = {
-	'@context': 'https://schema.org',
-	'@type': 'Person',
-	'@id': `${SITE.url}/#person`,
-	name: SITE.name,
-	url: SITE.url,
-	sameAs: [SITE.github, SITE.linkedin],
-};
-
 let jsonLd: Record<string, unknown>[] | undefined;
 
 if (isBsk24) {
 	jsonLd = [
-		personNode,
+		PERSON_JSON_LD,
 		{
 			'@context': 'https://schema.org',
 			'@type': 'SoftwareSourceCode',
@@ -70,7 +62,7 @@ if (isBsk24) {
 	];
 } else if (isThesis) {
 	jsonLd = [
-		personNode,
+		PERSON_JSON_LD,
 		{
 			'@context': 'https://schema.org',
 			'@type': 'CreativeWork',
@@ -86,7 +78,7 @@ if (isBsk24) {
 	];
 } else if (isToolkit) {
 	jsonLd = [
-		personNode,
+		PERSON_JSON_LD,
 		{
 			'@context': 'https://schema.org',
 			'@type': 'SoftwareSourceCode',
@@ -131,7 +123,7 @@ if (isBsk24) {
 			</dl>
 		</header>
 
-		{isBsk24 && <div class="shell"><ResearchFigure /></div>}
+		{isBsk24 && <Bsk24ResearchStory />}
 
 		<div class="shell project-body">
 			<aside class="project-sidebar" aria-labelledby="project-links-title">

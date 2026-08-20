@@ -2,55 +2,46 @@
 import Portrait from '../components/Portrait.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../site';
-
-const personJsonLd = {
-	'@context': 'https://schema.org',
-	'@type': 'Person',
-	'@id': `${SITE.url}/#person`,
-	name: SITE.name,
-	url: SITE.url,
-	email: `mailto:${SITE.email}`,
-	image: `${SITE.url}/images/ioannis-papathanasiou-social.jpg`,
-	alumniOf: {
-		'@type': 'CollegeOrUniversity',
-		name: 'Aristotle University of Thessaloniki',
-		url: 'https://www.auth.gr/en/',
-	},
-	sameAs: [SITE.github, SITE.linkedin],
-};
+import { PERSON_JSON_LD } from '../structuredData';
 ---
 
 <BaseLayout
 	title="About — Ioannis Papathanasiou"
-	description="Background, education, and scientific approach of Ioannis Papathanasiou, an early-career computational physicist in Thessaloniki."
+	description="Scientific motivation, working approach, and background of Ioannis Papathanasiou, an early-career computational physicist in Thessaloniki."
 	canonicalPath="/about/"
-	jsonLd={personJsonLd}
+	jsonLd={PERSON_JSON_LD}
 	ogImage="/images/ioannis-papathanasiou-social.jpg"
 	ogImageAlt="Portrait of Ioannis Papathanasiou with a city at night in the background"
 >
 	<header class="shell page-header">
 		<p class="eyebrow">Background and approach</p>
-		<h1>Physics, computation, and careful claims.</h1>
+		<h1>The physics comes first.</h1>
+		<p class="page-lede">
+			Computation makes a physical question testable; it should not obscure what the model
+			means or what the result can support.
+		</p>
 	</header>
 
 	<section class="shell about-grid" aria-label="About Ioannis Papathanasiou">
 		<Portrait />
 		<div class="about-copy">
 			<p>
-				I am an early-career computational physicist interested in problems where dense-matter
-				physics, numerical methods, and careful scientific software meet. My current work focuses
-				on controlled variations of neutron-star equations of state and the propagation of those
-				changes to equilibrium and tidal observables.
+				I am most motivated by problems where fundamental physics, astrophysical systems, and
+				computation meet. Compact objects and dense matter are especially compelling because
+				assumptions made at microscopic scales can influence macroscopic stellar structure and
+				tidal response.
 			</p>
 			<p>
-				My undergraduate thesis used synthetic equations of state, relativistic stellar
-				structure, and machine learning to investigate compact-star model discrimination. A later
-				audit of that work sharpened my interest in data provenance, group-aware validation, and
-				the difference between a useful model result and a general physical conclusion.
+				My approach is physics-first: understand the governing model and its domain, then choose
+				the numerical, computational, or statistical tools the question requires. I am interested
+				in machine learning when it can reveal physical structure or distinguish clearly defined
+				scenarios—not as an end in itself.
 			</p>
 			<p>
-				I value explicit assumptions, fail-closed validation, reproducible calculation records,
-				and a clear separation between what a model demonstrates and what remains unknown.
+				I value careful modelling, reproducibility, validation, and understanding why a method
+				works. That perspective has been shaped by both my current BSk24 work and the later audit
+				of my undergraduate classifier: in each case, the useful conclusion depends on a clear
+				account of what the model can and cannot establish.
 			</p>
 
 			<dl class="fact-list">
@@ -69,6 +60,11 @@ const personJsonLd = {
 				<dt>Contact</dt>
 				<dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd>
 			</dl>
+
+			<p class="personal-note">
+				Away from research, I enjoy Formula 1 and aerodynamics, travel, meeting new people, and
+				exploring places on foot.
+			</p>
 
 			<div class="link-row">
 				<a class="button-link" href={`mailto:${SITE.email}`}>Start a conversation</a>

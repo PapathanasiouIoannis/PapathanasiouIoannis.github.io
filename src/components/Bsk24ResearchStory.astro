@@ -1,0 +1,115 @@
+---
+import { Picture } from 'astro:assets';
+import geometryFigure from '../assets/realized-deformation-geometry.webp';
+import stellarFigure from '../assets/representative-stellar-sequences.webp';
+import thermodynamicFigure from '../assets/thermodynamic-propagation.webp';
+import { REPOSITORIES } from '../site';
+
+const licenseUrl = 'https://creativecommons.org/licenses/by/4.0/';
+---
+
+<section class="section visual-story" aria-labelledby="visual-story-title">
+	<div class="shell">
+		<div class="visual-story-heading">
+			<div>
+				<p class="section-kicker">Method in three stages</p>
+				<h2 id="visual-story-title">From a local change to a stellar response.</h2>
+			</div>
+			<p>
+				Three released calculation figures trace the method from deformation geometry through
+				thermodynamic reconstruction to stellar and tidal response.
+			</p>
+		</div>
+
+		<div class="story-stages">
+			<article class="story-stage">
+				<div class="story-copy">
+					<p class="stage-number">01 · Define</p>
+					<h3>Make the intervention explicit.</h3>
+					<p>
+						A Gaussian unit shape is introduced through a smooth activation window. Signed
+						amplitudes then produce a controlled family of raw sound-speed profiles on the
+						declared domain.
+					</p>
+				</div>
+				<figure class="story-figure">
+					<Picture
+						src={geometryFigure}
+						formats={['avif', 'webp']}
+						widths={[720, 1200, 1800]}
+						sizes="(max-width: 860px) calc(100vw - 2rem), 66vw"
+						alt="Four panels show the Gaussian and smooth window used to define the deformation, the realized unit deformation, signed changes to squared sound speed, and representative raw BSk24 sound-speed profiles."
+						loading="lazy"
+						decoding="async"
+					/>
+					<figcaption>
+						Realized deformation geometry. The construction is an effective controlled
+						deformation, not a microscopic composition model. <a href={REPOSITORIES.eosCampaignRelease}>Open original release</a>.
+					</figcaption>
+				</figure>
+			</article>
+
+			<article class="story-stage">
+				<div class="story-copy">
+					<p class="stage-number">02 · Reconstruct</p>
+					<h3>Require thermodynamic consistency.</h3>
+					<p>
+						Only admitted raw proposals are reconstructed. The plots expose how the signed
+						sound-speed change accumulates into pressure and the effective one-fluid density
+						and chemical-potential relations.
+					</p>
+				</div>
+				<figure class="story-figure">
+					<Picture
+						src={thermodynamicFigure}
+						formats={['avif', 'webp']}
+						widths={[720, 1200, 1800]}
+						sizes="(max-width: 860px) calc(100vw - 2rem), 66vw"
+						alt="Six plots compare negative, zero, and positive BSk24 sound-speed deformations: the local signed change accumulates into pressure differences and shifts reconstructed density and chemical-potential relations."
+						loading="lazy"
+						decoding="async"
+					/>
+					<figcaption>
+						Thermodynamic propagation for representative accepted branch endpoints. These are
+						effective one-fluid reconstructions. <a href={REPOSITORIES.eosCampaignRelease}>Open original release</a>.
+					</figcaption>
+				</figure>
+			</article>
+
+			<article class="story-stage">
+				<div class="story-copy">
+					<p class="stage-number">03 · Propagate</p>
+					<h3>Resolve the macroscopic response.</h3>
+					<p>
+						Representative admitted branches show how softening and stiffening alter
+						mass–radius sequences, the quadrupolar Love number, and tidal deformability—while
+						retaining numerical endpoint status in the figure itself.
+					</p>
+				</div>
+				<figure class="story-figure">
+					<Picture
+						src={stellarFigure}
+						formats={['avif', 'webp']}
+						widths={[720, 1200, 1800]}
+						sizes="(max-width: 860px) calc(100vw - 2rem), 66vw"
+						alt="Six panels compare softening and stiffening BSk24 branches in mass–radius, Love-number, and tidal-deformability sequences; blue curves soften, red curves stiffen, and symbols distinguish refined turning points from retained-domain endpoints."
+						loading="lazy"
+						decoding="async"
+					/>
+					<figcaption>
+						Representative stellar and tidal sequences. Filled circles mark saved refined
+						turning points; diamonds mark retained-domain endpoints, which are not interchangeable
+						maximum-mass determinations. <a href={REPOSITORIES.eosCampaignRelease}>Open original release</a>.
+					</figcaption>
+				</figure>
+			</article>
+		</div>
+
+		<p class="figure-credit">
+			Figures: Ioannis Papathanasiou,{' '}
+			<a href={REPOSITORIES.eosCampaignRelease}>BSk24 campaign data v1.0.0</a>,{' '}
+			<a href={licenseUrl}>CC BY 4.0</a>. Web-optimized from the released PDFs with
+			scientific content unchanged.
+		</p>
+	</div>
+</section>
