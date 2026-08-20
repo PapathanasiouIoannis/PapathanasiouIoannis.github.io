@@ -26,7 +26,7 @@ links:
 
 ## The question
 
-This project asks a deliberately narrow question: how do controlled, smooth changes to the sound speed in an analytical BSk24 equation of state propagate through thermodynamics and—when the proposal is admissible—through stellar structure?
+Within one analytical BSk24 baseline, how does a controlled local change in sound speed alter the reconstructed thermodynamics, and what follows for stellar structure and tides when the proposal passes every admissibility gate?
 
 The aim is not to manufacture arbitrary equations of state. It is to isolate a signed local change, retain a well-defined low-density anchor, and make the consequences auditable from the raw proposal through the reported observables.
 

@@ -1,75 +1,71 @@
 ---
 import { getCollection } from 'astro:content';
 import Portrait from '../components/Portrait.astro';
+import ResearchThroughline from '../components/ResearchThroughline.astro';
 import WorkCard from '../components/WorkCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../site';
+import { PERSON_JSON_LD } from '../structuredData';
 
 const featuredWork = (await getCollection('work'))
 	.filter((entry) => entry.data.featured)
 	.sort((a, b) => a.data.order - b.data.order);
 
-const personJsonLd = {
-	'@context': 'https://schema.org',
-	'@type': 'Person',
-	'@id': `${SITE.url}/#person`,
-	name: SITE.name,
-	url: SITE.url,
-	email: `mailto:${SITE.email}`,
-	image: `${SITE.url}/images/ioannis-papathanasiou-social.jpg`,
-	homeLocation: { '@type': 'Place', name: SITE.location },
-	alumniOf: {
-		'@type': 'CollegeOrUniversity',
-		name: 'Aristotle University of Thessaloniki',
-		url: 'https://www.auth.gr/en/',
-	},
-	sameAs: [SITE.github, SITE.linkedin],
-	knowsAbout: [
-		'Neutron-star equations of state',
-		'Relativistic stellar structure',
-		'Computational physics',
-		'Scientific software',
-	],
-};
 ---
 
 <BaseLayout
-	jsonLd={personJsonLd}
+	jsonLd={PERSON_JSON_LD}
 	ogImage="/images/ioannis-papathanasiou-social.jpg"
 	ogImageAlt="Portrait of Ioannis Papathanasiou with a city at night in the background"
 >
 	<section class="shell hero" aria-labelledby="hero-title">
 		<div class="hero-copy">
-			<p class="eyebrow">Ioannis Papathanasiou · Computational physicist</p>
-			<h1 id="hero-title">Computational physics for neutron-star matter.</h1>
+			<p class="eyebrow">Physics graduate · Early-career computational physicist</p>
+			<h1 id="hero-title">From dense matter to compact-star observables.</h1>
 			<p class="hero-intro">
-				I’m a physics graduate and early-career computational physicist based in Thessaloniki,
-				Greece. My work combines dense-matter equations of state, relativistic stellar structure,
-				and reproducible scientific software.
+				I study how descriptions of dense matter become macroscopic signatures in compact stars,
+				using computational and statistical methods chosen to serve the physics.
 			</p>
 			<p class="hero-focus">
-				My current methods work uses controlled sound-speed deformations of analytical BSk24 to
-				study how thermodynamically admissible changes propagate to stellar and tidal observables.
+				<strong>Current focus:</strong> controlled sound-speed deformations of analytical BSk24,
+				with thermodynamic admissibility assessed before one-fluid reconstruction and stellar
+				calculations.
 			</p>
 			<div class="link-row">
 				<a class="button-link" href="/work/">View selected work <span aria-hidden="true">→</span></a>
 				<a class="button-link secondary" href={`mailto:${SITE.email}`}>Email me</a>
 			</div>
+			<dl class="hero-index">
+				<div>
+					<dt>Approach</dt>
+					<dd>Question → model → test</dd>
+				</div>
+				<div>
+					<dt>Domain</dt>
+					<dd>Dense matter → compact stars</dd>
+				</div>
+				<div>
+					<dt>Based in</dt>
+					<dd>Thessaloniki, Greece</dd>
+				</div>
+			</dl>
 		</div>
 		<Portrait priority />
 	</section>
+
+	<ResearchThroughline />
 
 	<section class="section" aria-labelledby="selected-work-title">
 		<div class="shell">
 			<div class="section-heading">
 				<div>
 					<p class="section-kicker">Selected work</p>
-					<h2 id="selected-work-title">A focused research trajectory</h2>
+					<h2 id="selected-work-title">Current work and methodological foundations.</h2>
 				</div>
 				<p>
-					The portfolio is intentionally selective. It leads with the current BSk24 method, then
-					shows how a synthetic undergraduate classification study developed into a more careful
-					account of validation and scientific scope.
+					The BSk24 method leads with released software and campaign evidence. The thesis case
+					study shows how a later audit narrowed the defensible claim and strengthened the
+					methodological lesson.
 				</p>
 			</div>
 			<div class="work-grid">
@@ -78,30 +74,38 @@ const personJsonLd = {
 		</div>
 	</section>
 
-	<section class="section" aria-labelledby="working-principles-title">
+	<section class="section method-section" aria-labelledby="working-principles-title">
 		<div class="shell">
 			<div class="section-heading">
 				<div>
-					<p class="section-kicker">Working principles</p>
-					<h2 id="working-principles-title">Clarity is part of the method.</h2>
+					<p class="section-kicker">How I work</p>
+					<h2 id="working-principles-title">The tool follows the question.</h2>
 				</div>
 				<p>
-					I am most interested in computational work where assumptions, numerical capability, and
-					the boundary of the claim can be inspected—not merely inferred from a final plot.
+					A result is more convincing when its assumptions, numerical behaviour, and limits can be
+					inspected. Reproducibility and validation are built into the method from the start.
 				</p>
 			</div>
 			<div class="principles-grid">
 				<article class="principle">
-					<h3>Fail closed</h3>
-					<p>Keep rejected physical or numerical cases visible instead of repairing them silently.</p>
+					<p class="principle-number" aria-hidden="true">01</p>
+					<h3>Start with the physics</h3>
+					<p>Define the system, relevant scales, and scientific question before choosing the machinery.</p>
 				</article>
 				<article class="principle">
-					<h3>Record provenance</h3>
-					<p>Connect configurations, sources, environments, and outputs through reproducible records.</p>
+					<p class="principle-number" aria-hidden="true">02</p>
+					<h3>Make the model explicit</h3>
+					<p>Expose assumptions, domains, anchors, and admissibility conditions.</p>
 				</article>
 				<article class="principle">
-					<h3>State the boundary</h3>
-					<p>Separate what a model demonstrates from composition, observation, or physics it cannot establish.</p>
+					<p class="principle-number" aria-hidden="true">03</p>
+					<h3>Choose the tool</h3>
+					<p>Use numerical, statistical, or machine-learning methods only where they resolve the physical question.</p>
+				</article>
+				<article class="principle">
+					<p class="principle-number" aria-hidden="true">04</p>
+					<h3>Validate the claim</h3>
+					<p>Test sensitivity, preserve provenance, retain failures, and state the interpretation boundary.</p>
 				</article>
 			</div>
 		</div>

@@ -3,7 +3,7 @@ export const SITE = {
 	shortName: 'IP',
 	title: 'Ioannis Papathanasiou — Computational physicist',
 	description:
-		'Computational physicist working on neutron-star equations of state, relativistic stellar structure, and reproducible scientific software.',
+		'Computational physicist working across dense-matter physics, compact-star structure, numerical modelling, and reproducible scientific software.',
 	url: 'https://papathanasiouioannis.github.io',
 	email: 'giannis.papathanasiou.pth@gmail.com',
 	location: 'Thessaloniki, Greece',

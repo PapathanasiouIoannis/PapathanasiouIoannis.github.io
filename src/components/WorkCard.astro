@@ -8,15 +8,17 @@ interface Props {
 
 const { entry, index } = Astro.props;
 const number = String(index + 1).padStart(2, '0');
+const isLead = entry.id === 'bsk24-sound-speed-deformations';
 ---
 
-<article class:list={['work-card', { featured: entry.data.featured }]}>
+<article class:list={['work-card', `work-card--${entry.data.kind}`, { 'is-lead': isLead }]}>
 	<div class="card-topline">
 		<span class="card-number" aria-hidden="true">{number}</span>
 		<p class="card-meta">{entry.data.eyebrow}<br />{entry.data.period}</p>
 	</div>
 	<h3>{entry.data.shortTitle}</h3>
 	<p class="card-description">{entry.data.description}</p>
+	<p class="card-status">{entry.data.status}</p>
 	<div class="card-footer">
 		<ul class="tag-list" aria-label="Methods and topics">
 			{entry.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
