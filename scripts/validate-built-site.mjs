@@ -51,10 +51,12 @@ for (const file of htmlFiles) {
 		['canonical', /<link\s+rel="canonical"\s+href="([^"]+)"\s*\/?>/gi],
 	]) {
 		const values = matches(html, pattern);
-		if (values.length !== 1) {
-			fail(file, `expected one ${label}, found ${values.length}`);
+		const expectedCount = label === 'canonical' && path.basename(file) === '404.html' ? 0 : 1;
+		if (values.length !== expectedCount) {
+			fail(file, `expected ${expectedCount} ${label}, found ${values.length}`);
 			continue;
 		}
+		if (expectedCount === 0) continue;
 		const value = values[0][1];
 		const previous = seen[label].get(value);
 		if (previous) fail(file, `${label} duplicates ${path.relative(projectRoot, previous)}`);

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { REPOSITORIES, SITE } from '../site';
+import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
 ---
 
 <BaseLayout
@@ -38,6 +38,11 @@ import { REPOSITORIES, SITE } from '../site';
 					through numerical and statistical methods, with particular attention to validation,
 					provenance, and scientific scope.
 				</p>
+				<p>
+					Research and scientific-software work supervised by Charalampos Moustakidis and
+					Theodoros Diakonidis. Codex-assisted software development; scientific interpretation
+					and responsibility retained by Ioannis Papathanasiou.
+				</p>
 			</div>
 		</section>
 
@@ -64,6 +69,16 @@ import { REPOSITORIES, SITE } from '../site';
 						generalization risks.
 					</p>
 				</article>
+				<article class="cv-entry">
+					<h3>Post-thesis classifier audit and interactive demonstrations</h3>
+					<p class="cv-entry-meta">Methods and software · 2026–present</p>
+					<p>
+						Audited and redeveloped the restricted synthetic classification workflow, with
+						physical-family partitioning and explicit interpretation limits. Developed separate
+						baseline and perturbation-sensitivity demonstrations whose outputs are labelled as
+						uncalibrated model scores rather than astrophysical probabilities.
+					</p>
+				</article>
 			</div>
 		</section>
 
@@ -72,11 +87,19 @@ import { REPOSITORIES, SITE } from '../site';
 			<div>
 				<article class="cv-entry">
 					<h3><a href={REPOSITORIES.eosGenerationRelease}>EoS Generation, v1.0.0</a></h3>
-					<p>Author and maintainer · Python · MIT licensed.</p>
+					<p>Developer and maintainer · Python · MIT licensed.</p>
 				</article>
 				<article class="cv-entry">
 					<h3><a href={REPOSITORIES.eosToolkit}>Neutron-star EoS toolkit</a></h3>
 					<p>Early-stage scientific software · Python · MIT licensed · no formal release.</p>
+				</article>
+				<article class="cv-entry">
+					<h3>Interactive compact-star classifier demonstrations</h3>
+					<p>
+						<a href={LIVE_APPS.clean}>Baseline demonstration</a> ·
+						<a href={LIVE_APPS.perturbed}>Perturbation sensitivity</a> · restricted synthetic
+						model scores, not observational inference.
+					</p>
 				</article>
 			</div>
 		</section>
@@ -88,7 +111,8 @@ import { REPOSITORIES, SITE } from '../site';
 				<p class="cv-entry-meta">2021–2026 · 240 ECTS · 8.46/10 (“Very Good”)</p>
 				<p>
 					Undergraduate thesis: <em>Machine Learning Classification of Neutron Star Composition</em>
-					(10/10). Supervisors: Charalampos Moustakidis and Theodoros Diakonidis.
+					(10/10). Supervisors: Charalampos Moustakidis and Theodoros Diakonidis. Examining
+					committee: Charalampos Moustakidis, Theodoros Diakonidis, and Theodoros Gaitanos.
 				</p>
 			</div>
 		</section>

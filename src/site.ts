@@ -13,6 +13,7 @@ export const SITE = {
 
 export const NAV_ITEMS = [
 	{ href: '/work/', label: 'Work' },
+	{ href: '/apps/', label: 'Live Apps' },
 	{ href: '/outputs/', label: 'Outputs' },
 	{ href: '/about/', label: 'About' },
 	{ href: '/cv/', label: 'CV' },
@@ -32,4 +33,9 @@ export const REPOSITORIES = {
 	thesisRecord:
 		'https://www.researchgate.net/publication/400555533_Machine_Learning_Classification_of_Neutron_Star_Composition',
 	eosToolkit: 'https://github.com/PapathanasiouIoannis/neutron-star-eos-toolkit',
+} as const;
+
+export const LIVE_APPS = {
+	clean: 'https://eoslab-clean-inference.streamlit.app/',
+	perturbed: 'https://eoslab-perturbed-inference.streamlit.app/',
 } as const;

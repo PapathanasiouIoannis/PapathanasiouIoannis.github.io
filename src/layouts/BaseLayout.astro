@@ -7,9 +7,11 @@ import '../styles/global.css';
 interface Props {
 	title?: string;
 	description?: string;
-	canonicalPath?: string;
+	canonicalPath?: string | false;
 	ogImage?: string;
 	ogImageAlt?: string;
+	ogImageWidth?: number;
+	ogImageHeight?: number;
 	noindex?: boolean;
 	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -20,11 +22,13 @@ const {
 	canonicalPath = Astro.url.pathname,
 	ogImage,
 	ogImageAlt,
+	ogImageWidth = 1200,
+	ogImageHeight = 630,
 	noindex = false,
 	jsonLd,
 } = Astro.props;
 
-const canonicalUrl = new URL(canonicalPath, SITE.url).toString();
+const canonicalUrl = canonicalPath === false ? undefined : new URL(canonicalPath, SITE.url).toString();
 const absoluteImage = ogImage ? new URL(ogImage, SITE.url).toString() : undefined;
 const structuredData = jsonLd
 	? JSON.stringify(jsonLd).replaceAll('<', '\\u003c')
@@ -41,7 +45,7 @@ const structuredData = jsonLd
 		<meta name="description" content={description} />
 		<meta name="author" content={SITE.name} />
 		{noindex && <meta name="robots" content="noindex" />}
-		<link rel="canonical" href={canonicalUrl} />
+		{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="manifest" href="/site.webmanifest" />
@@ -50,11 +54,11 @@ const structuredData = jsonLd
 		<meta property="og:site_name" content={SITE.name} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:url" content={canonicalUrl} />
+		{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
 		{absoluteImage && <meta property="og:image" content={absoluteImage} />}
 		{absoluteImage && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
-		{absoluteImage && <meta property="og:image:width" content="1200" />}
-		{absoluteImage && <meta property="og:image:height" content="630" />}
+		{absoluteImage && <meta property="og:image:width" content={String(ogImageWidth)} />}
+		{absoluteImage && <meta property="og:image:height" content={String(ogImageHeight)} />}
 
 		<meta name="twitter:card" content={absoluteImage ? 'summary_large_image' : 'summary'} />
 		<meta name="twitter:title" content={title} />

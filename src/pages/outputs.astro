@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { REPOSITORIES, SITE } from '../site';
+import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
 
 const outputJsonLd = [
 	{
@@ -86,13 +86,30 @@ const outputJsonLd = [
 				<h2>Machine Learning Classification of Neutron Star Composition</h2>
 				<p>
 					A synthetic compact-star model-discrimination study examined in February 2026 (10/10).
-					The submitted snapshot and the later methodological audit are linked separately so their
-					different status is clear.
+					The official thesis record, a later historical code snapshot, and the post-thesis
+					methodological audit are linked separately so their different status is clear.
 				</p>
 				<div class="link-row">
 					<a class="text-link" href={REPOSITORIES.thesisRecord}>Thesis record <span aria-hidden="true">↗</span></a>
-					<a class="text-link" href={REPOSITORIES.thesisSnapshot}>Submitted snapshot <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href={REPOSITORIES.thesisSnapshot}>Later historical code snapshot <span aria-hidden="true">↗</span></a>
 					<a class="text-link" href={REPOSITORIES.thesisAudit}>Risk audit <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+		</article>
+
+		<article class="output-item">
+			<p class="output-type">Software · public demonstrations</p>
+			<div>
+				<h2>Interactive compact-star classifier demonstrations</h2>
+				<p>
+					Two independent post-thesis applications expose retained classifier artifacts as
+					restricted synthetic model scores. They are not observational inference services or
+					composition-probability tools.
+				</p>
+				<div class="link-row">
+					<a class="text-link" href="/apps/">Scope and launch notes <span aria-hidden="true">→</span></a>
+					<a class="text-link" href={LIVE_APPS.clean}>Baseline demonstration <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href={LIVE_APPS.perturbed}>Perturbation sensitivity <span aria-hidden="true">↗</span></a>
 				</div>
 			</div>
 		</article>

@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
+
+const appsJsonLd = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: 'Compact-star synthetic classifier — baseline demonstration',
+		applicationCategory: 'EducationalApplication',
+		operatingSystem: 'Web',
+		url: LIVE_APPS.clean,
+		author: { '@id': `${SITE.url}/#person` },
+		description:
+			'Interactive demonstration of classifier scores in a restricted APR-1-surrogate versus fixed-CFL4 synthetic comparison.',
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: 'Compact-star synthetic classifier — perturbation-sensitivity demonstration',
+		applicationCategory: 'EducationalApplication',
+		operatingSystem: 'Web',
+		url: LIVE_APPS.perturbed,
+		author: { '@id': `${SITE.url}/#person` },
+		description:
+			'Interactive perturbation-sensitivity demonstration for a restricted synthetic compact-star classifier.',
+	},
+];
+---
+
+<BaseLayout
+	title="Live scientific demonstrations — Ioannis Papathanasiou"
+	description="Interactive post-thesis demonstrations of restricted synthetic compact-star classifiers, with assumptions and interpretation limits stated explicitly."
+	canonicalPath="/apps/"
+	jsonLd={appsJsonLd}
+	ogImage="/images/eoslab-clean-demonstration.png"
+	ogImageAlt="Baseline synthetic-classifier demonstration showing score summaries and a restricted synthetic model-space plot"
+	ogImageWidth={1280}
+	ogImageHeight={720}
+>
+	<header class="shell page-header apps-header">
+		<p class="eyebrow">Interactive post-thesis extensions</p>
+		<h1>Live demonstrations, with the limits visible.</h1>
+		<p class="page-lede">
+			These applications make retained classifier artifacts explorable. They are demonstrations of
+			restricted synthetic comparisons—not observational inference services or tools for determining
+			the composition of a real star.
+		</p>
+	</header>
+
+	<section class="shell boundary-note apps-boundary" aria-labelledby="apps-boundary-title">
+		<h2 id="apps-boundary-title">Shared interpretation boundary</h2>
+		<p>
+			The displayed values are uncalibrated model scores. Input uncertainty is represented by
+			independent Gaussian samples rather than real NICER or LIGO posterior samples. The central
+			95% score range is not a confidence interval or composition posterior, and SHAP explains
+			fitted-model behaviour rather than physical truth.
+		</p>
+	</section>
+
+	<section class="shell app-list" aria-label="Live scientific demonstrations">
+		<article class="app-card app-card--clean">
+			<figure class="app-preview">
+				<img
+					src="/images/eoslab-clean-demonstration.png"
+					alt="Baseline demonstration with classifier-score summaries and a mass–radius view of the restricted synthetic model space"
+					width="1280"
+					height="720"
+					loading="eager"
+					decoding="async"
+				/>
+				<figcaption>Baseline synthetic-classifier interface; screenshot captured from the reviewed local build.</figcaption>
+			</figure>
+			<div class="app-card-copy">
+				<p class="app-index">01 · Baseline demonstration</p>
+				<h2>APR-1-surrogate versus fixed-CFL4 scores</h2>
+				<p>
+					Explore how a retained classifier responds to selected mass, radius, and tidal inputs
+					inside one restricted synthetic model comparison.
+				</p>
+				<ul class="app-facts" aria-label="Baseline app scope">
+					<li>Restricted repository-model comparison</li>
+					<li>Independent Gaussian input sampling</li>
+					<li>Uncalibrated classifier scores</li>
+				</ul>
+				<div class="link-row">
+					<a
+						class="button-link"
+						href={LIVE_APPS.clean}
+						aria-label="Launch the baseline demonstration on Streamlit Community Cloud"
+					>
+						Launch demonstration <span aria-hidden="true">↗</span>
+					</a>
+					<a class="text-link" href="/work/compact-star-model-discrimination/">
+						Read the scientific context <span aria-hidden="true">→</span>
+					</a>
+				</div>
+				<p class="wake-note">Hosted on Streamlit Community Cloud; it may take a moment to wake.</p>
+			</div>
+		</article>
+
+		<article class="app-card app-card--perturbed">
+			<figure class="app-preview">
+				<img
+					src="/images/eoslab-perturbed-demonstration.png"
+					alt="Perturbation-sensitivity demonstration with classifier-score summaries and a mass–radius view of the perturbed synthetic model space"
+					width="1280"
+					height="720"
+					loading="lazy"
+					decoding="async"
+				/>
+				<figcaption>Perturbation-sensitivity interface; screenshot captured from the reviewed local build.</figcaption>
+			</figure>
+			<div class="app-card-copy">
+				<p class="app-index">02 · Perturbation sensitivity</p>
+				<h2>Synthetic perturbations, without compactness as a feature</h2>
+				<p>
+					Explore score sensitivity in the retained perturbed workflow. This tests one declared
+					synthetic error construction; it does not reproduce observational uncertainty.
+				</p>
+				<ul class="app-facts" aria-label="Perturbed app scope">
+					<li>Compactness excluded from classifier inputs</li>
+					<li>Mass–radius and mass–radius–tidal modes</li>
+					<li>No phase-general or observational claim</li>
+				</ul>
+				<div class="link-row">
+					<a
+						class="button-link"
+						href={LIVE_APPS.perturbed}
+						aria-label="Launch the perturbation-sensitivity demonstration on Streamlit Community Cloud"
+					>
+						Launch demonstration <span aria-hidden="true">↗</span>
+					</a>
+					<a class="text-link" href={REPOSITORIES.thesisAudit}>
+						Read the risk audit <span aria-hidden="true">↗</span>
+					</a>
+				</div>
+				<p class="wake-note">Hosted on Streamlit Community Cloud; it may take a moment to wake.</p>
+			</div>
+		</article>
+	</section>
+
+	<section class="section app-responsibility" aria-labelledby="app-responsibility-title">
+		<div class="shell section-heading">
+			<div>
+				<p class="section-kicker">Development and supervision</p>
+				<h2 id="app-responsibility-title">Responsibility remains explicit.</h2>
+			</div>
+			<p>
+				The demonstrations were developed by Ioannis Papathanasiou as independent post-thesis
+				extensions, under the supervision of Charalampos Moustakidis and Theodoros Diakonidis.
+				Codex assisted with software development; scientific interpretation and responsibility
+				remain with Ioannis Papathanasiou.
+			</p>
+		</div>
+	</section>
+</BaseLayout>
