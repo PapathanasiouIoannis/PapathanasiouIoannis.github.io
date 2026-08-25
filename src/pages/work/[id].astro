@@ -2,8 +2,8 @@
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Bsk24ResearchStory from '../../components/Bsk24ResearchStory.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { SITE } from '../../site';
-import { PERSON_JSON_LD } from '../../structuredData';
+import { PREPRINT, SITE } from '../../site';
+import { PERSON_JSON_LD, PREPRINT_JSON_LD } from '../../structuredData';
 
 export async function getStaticPaths() {
 	const entries = await getCollection('work');
@@ -30,6 +30,7 @@ let jsonLd: Record<string, unknown>[] | undefined;
 if (isBsk24) {
 	jsonLd = [
 		PERSON_JSON_LD,
+		PREPRINT_JSON_LD,
 		{
 			'@context': 'https://schema.org',
 			'@type': 'SoftwareSourceCode',
@@ -73,7 +74,6 @@ if (isBsk24) {
 			inLanguage: 'en',
 			educationalLevel: 'Undergraduate',
 			author: { '@id': `${SITE.url}/#person` },
-			url: 'https://www.researchgate.net/publication/400555533_Machine_Learning_Classification_of_Neutron_Star_Composition',
 		},
 	];
 } else if (isToolkit) {
@@ -85,9 +85,6 @@ if (isBsk24) {
 			name: 'Neutron-star EoS toolkit',
 			description: entry.data.description,
 			programmingLanguage: 'Python',
-			codeRepository: 'https://github.com/PapathanasiouIoannis/neutron-star-eos-toolkit',
-			url: 'https://github.com/PapathanasiouIoannis/neutron-star-eos-toolkit',
-			license: 'https://opensource.org/license/mit',
 			author: { '@id': `${SITE.url}/#person` },
 		},
 	];
@@ -99,11 +96,27 @@ if (isBsk24) {
 	description={entry.data.description}
 	canonicalPath={`/work/${entry.id}/`}
 	jsonLd={jsonLd}
+	ogType={isBsk24 ? 'article' : 'website'}
 	ogImage={isBsk24 ? '/images/bsk24-thermodynamic-propagation-social.jpg' : undefined}
 	ogImageAlt={isBsk24 ? 'Three plots show how negative and positive BSk24 sound-speed deformations accumulate into pressure responses.' : undefined}
 >
+	<Fragment slot="head">
+		{
+			isBsk24 && (
+				<>
+					<meta name="citation_title" content={PREPRINT.title} />
+					<meta name="citation_author" content={PREPRINT.author} />
+					<meta name="citation_publication_date" content="2026/08/24" />
+					<meta name="citation_arxiv_id" content="2608.23033" />
+					<meta name="citation_pdf_url" content={PREPRINT.pdf} />
+					<meta property="article:published_time" content={PREPRINT.submitted} />
+					<link rel="alternate" type="application/x-bibtex" title="BibTeX citation" href={PREPRINT.bibtex} />
+				</>
+			)
+		}
+	</Fragment>
 	<article>
-		<header class="shell project-hero">
+		<header class:list={['shell', 'project-hero', { 'project-hero--preprint': isBsk24 }]}>
 			<p class="eyebrow">{entry.data.eyebrow}</p>
 			<h1>{entry.data.title}</h1>
 			<p class="project-deck">{entry.data.description}</p>
@@ -125,21 +138,23 @@ if (isBsk24) {
 
 		{isBsk24 && <Bsk24ResearchStory />}
 
-		<div class="shell project-body">
-			<aside class="project-sidebar" aria-labelledby="project-links-title">
-				<h2 id="project-links-title">Project links</h2>
-				<ul class="project-links">
-					{
-						entry.data.links.map((link) => (
-							<li>
-								<a href={link.href}>
-									{link.label} <span aria-hidden="true">↗</span>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</aside>
+		<div class:list={['shell', 'project-body', { 'project-body--without-links': entry.data.links.length === 0 }]}>
+			{
+				entry.data.links.length > 0 && (
+					<aside class="project-sidebar" aria-labelledby="project-links-title">
+						<h2 id="project-links-title">Project links</h2>
+						<ul class="project-links">
+							{entry.data.links.map((link) => (
+								<li>
+									<a href={link.href}>
+										{link.label} <span aria-hidden="true">↗</span>
+									</a>
+								</li>
+							))}
+						</ul>
+					</aside>
+				)
+			}
 			<div class="prose">
 				<Content />
 			</div>

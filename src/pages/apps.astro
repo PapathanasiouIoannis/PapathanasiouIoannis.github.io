@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
+import { LIVE_APPS, SITE } from '../site';
 
 const appsJsonLd = [
 	{
@@ -44,7 +44,7 @@ const appsJsonLd = [
 		<p class="page-lede">
 			These applications make retained classifier artifacts explorable. They are demonstrations of
 			restricted synthetic comparisons—not observational inference services or tools for determining
-			the composition of a real star.
+			the composition of a real star. They are also independent of the BSk24 arXiv preprint.
 		</p>
 	</header>
 
@@ -131,8 +131,8 @@ const appsJsonLd = [
 					>
 						Launch demonstration <span aria-hidden="true">↗</span>
 					</a>
-					<a class="text-link" href={REPOSITORIES.thesisAudit}>
-						Read the risk audit <span aria-hidden="true">↗</span>
+					<a class="text-link" href="/work/compact-star-model-discrimination/">
+						Read the scientific context <span aria-hidden="true">→</span>
 					</a>
 				</div>
 				<p class="wake-note">Hosted on Streamlit Community Cloud; it may take a moment to wake.</p>
@@ -143,13 +143,13 @@ const appsJsonLd = [
 	<section class="section app-responsibility" aria-labelledby="app-responsibility-title">
 		<div class="shell section-heading">
 			<div>
-				<p class="section-kicker">Development and supervision</p>
-				<h2 id="app-responsibility-title">Responsibility remains explicit.</h2>
+				<p class="section-kicker">Development boundary</p>
+				<h2 id="app-responsibility-title">Independent post-thesis extensions.</h2>
 			</div>
 			<p>
-				The demonstrations were developed by Ioannis Papathanasiou as independent post-thesis
-				extensions, under the supervision of Charalampos Moustakidis and Theodoros Diakonidis.
-				Codex assisted with software development; scientific interpretation and responsibility
+				The demonstrations were developed after the thesis as separate classification extensions.
+				They are not thesis-submission artifacts, observational inference services, or official
+				companion applications to the BSk24 preprint. Scientific interpretation and responsibility
 				remain with Ioannis Papathanasiou.
 			</p>
 		</div>

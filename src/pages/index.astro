@@ -4,8 +4,8 @@ import Portrait from '../components/Portrait.astro';
 import ResearchThroughline from '../components/ResearchThroughline.astro';
 import WorkCard from '../components/WorkCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE } from '../site';
-import { PERSON_JSON_LD } from '../structuredData';
+import { PREPRINT, SITE } from '../site';
+import { PERSON_JSON_LD, PREPRINT_JSON_LD } from '../structuredData';
 
 const featuredWork = (await getCollection('work'))
 	.filter((entry) => entry.data.featured)
@@ -14,7 +14,7 @@ const featuredWork = (await getCollection('work'))
 ---
 
 <BaseLayout
-	jsonLd={PERSON_JSON_LD}
+	jsonLd={[PERSON_JSON_LD, PREPRINT_JSON_LD]}
 	ogImage="/images/ioannis-papathanasiou-social.jpg"
 	ogImageAlt="Portrait of Ioannis Papathanasiou with a city at night in the background"
 >
@@ -22,6 +22,16 @@ const featuredWork = (await getCollection('work'))
 		<div class="hero-copy">
 			<p class="eyebrow">Physics graduate · Early-career computational physicist</p>
 			<h1 id="hero-title">From dense matter to compact-star observables.</h1>
+			<aside class="hero-preprint" aria-label="Latest research output">
+				<p class="hero-preprint-label">New · arXiv preprint · sole author</p>
+				<p class="hero-preprint-title">{PREPRINT.title}</p>
+				<p class="hero-preprint-meta">
+					{PREPRINT.identifier} [nucl-th] · submitted <time datetime={PREPRINT.submitted}>24 August 2026</time>
+				</p>
+				<a class="text-link" href={PREPRINT.record}>
+					Read on arXiv <span aria-hidden="true">↗</span>
+				</a>
+			</aside>
 			<p class="hero-intro">
 				I study how descriptions of dense matter become macroscopic signatures in compact stars,
 				using computational and statistical methods chosen to serve the physics.
@@ -63,9 +73,9 @@ const featuredWork = (await getCollection('work'))
 					<h2 id="selected-work-title">Current work and methodological foundations.</h2>
 				</div>
 				<p>
-					The BSk24 method leads with released software and campaign evidence. The thesis case
-					study shows how a later audit narrowed the defensible claim and strengthened the
-					methodological lesson.
+					The BSk24 study now leads with its sole-authored arXiv preprint, released software,
+					and campaign evidence. The thesis case study remains distinct and shows how a later
+					methodological review narrowed the defensible classification claim.
 				</p>
 			</div>
 			<div class="work-grid">

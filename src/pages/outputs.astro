@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
+import { LIVE_APPS, PREPRINT, REPOSITORIES, SITE } from '../site';
+import { PREPRINT_JSON_LD } from '../structuredData';
 
 const outputJsonLd = [
+	PREPRINT_JSON_LD,
 	{
 		'@context': 'https://schema.org',
 		'@type': 'SoftwareSourceCode',
@@ -34,20 +36,50 @@ const outputJsonLd = [
 
 <BaseLayout
 	title="Public outputs — Ioannis Papathanasiou"
-	description="Versioned software, data, thesis materials, and early-stage scientific tooling by Ioannis Papathanasiou, with status stated explicitly."
+	description="The sole-authored arXiv preprint, versioned research software, campaign data, thesis record, and scientific demonstrations of Ioannis Papathanasiou."
 	canonicalPath="/outputs/"
 	jsonLd={outputJsonLd}
+	ogImage="/images/bsk24-thermodynamic-propagation-social.jpg"
+	ogImageAlt="Three plots show how negative and positive BSk24 sound-speed deformations accumulate into pressure responses."
 >
 	<header class="shell page-header">
-		<p class="eyebrow">Software, data, and thesis</p>
+		<p class="eyebrow">Preprint, software, data, and thesis</p>
 		<h1>Public outputs.</h1>
 		<p class="page-lede">
-			Versioned artifacts that can be inspected and cited now. Each entry states what is public,
-			what it contains, and the scientific scope it supports.
+			Research outputs that can be inspected and cited now, with preprint status, artifact
+			provenance, and scientific scope stated explicitly.
 		</p>
 	</header>
 
 	<section class="shell output-list" aria-label="Public output list">
+		<article class="output-item output-item--preprint">
+			<p class="output-type">arXiv preprint · <time datetime={PREPRINT.submitted}>2026</time></p>
+			<div>
+				<h2>{PREPRINT.title}</h2>
+				<p class="output-citation">
+					{PREPRINT.author}, sole author · {PREPRINT.identifier} [{PREPRINT.primaryCategory}] ·
+					submitted <time datetime={PREPRINT.submitted}>2026-08-24</time> · cross-listed in{' '}
+					{PREPRINT.crossList} · 19 pages, 10 figures, 6 tables.
+				</p>
+				<p>
+					A controlled study of how signed local sound-speed changes propagate through
+					thermodynamic reconstruction and central-state relocation into a mass-dependent,
+					nonlinear, sign-asymmetric neutron-star response. The effective barotropes are not
+					BSk24 predictions or evidence for a microscopic composition or phase transition.
+				</p>
+				<p class="output-note">
+					Public preprint; not peer reviewed, not a journal publication or journal-accepted work.
+					No journal submission is planned.
+				</p>
+				<div class="link-row">
+					<a class="text-link" href={PREPRINT.record}>arXiv record <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href={PREPRINT.pdf}>PDF <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href={PREPRINT.bibtex}>BibTeX <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href="/work/bsk24-sound-speed-deformations/">Research context <span aria-hidden="true">→</span></a>
+				</div>
+			</div>
+		</article>
+
 		<article class="output-item">
 			<p class="output-type">Software · v1.0.0</p>
 			<div>
@@ -86,13 +118,11 @@ const outputJsonLd = [
 				<h2>Machine Learning Classification of Neutron Star Composition</h2>
 				<p>
 					A synthetic compact-star model-discrimination study examined in February 2026 (10/10).
-					The official thesis record, a later historical code snapshot, and the post-thesis
-					methodological audit are linked separately so their different status is clear.
+					The examined thesis is distinct from the later methodological redevelopment and from
+					the BSk24 preprint.
 				</p>
 				<div class="link-row">
-					<a class="text-link" href={REPOSITORIES.thesisRecord}>Thesis record <span aria-hidden="true">↗</span></a>
-					<a class="text-link" href={REPOSITORIES.thesisSnapshot}>Later historical code snapshot <span aria-hidden="true">↗</span></a>
-					<a class="text-link" href={REPOSITORIES.thesisAudit}>Risk audit <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href="/work/compact-star-model-discrimination/">Thesis and redevelopment context <span aria-hidden="true">→</span></a>
 				</div>
 			</div>
 		</article>
@@ -115,16 +145,16 @@ const outputJsonLd = [
 		</article>
 
 		<article class="output-item">
-			<p class="output-type">Software · alpha</p>
+			<p class="output-type">Ongoing software · alpha</p>
 			<div>
 				<h2>Neutron-star EoS toolkit</h2>
 				<p>
-					An early-stage MIT-licensed repository for analytical, CSV, and cold one-dimensional
-					CompOSE inputs and continuous source-boundary TOV backgrounds. It has no formal release
-					or public benchmark result packet yet.
+					Early-stage development work for analytical, CSV, and cold one-dimensional CompOSE
+					inputs and continuous source-boundary TOV backgrounds. It has no formal release or
+					public benchmark result packet; the repository link is omitted while public-scope and
+					citation wording remain under review.
 				</p>
 				<div class="link-row">
-					<a class="text-link" href={REPOSITORIES.eosToolkit}>Repository <span aria-hidden="true">↗</span></a>
 					<a class="text-link" href="/work/neutron-star-eos-toolkit/">Scope and limitations <span aria-hidden="true">→</span></a>
 				</div>
 			</div>

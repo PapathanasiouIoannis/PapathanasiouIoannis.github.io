@@ -117,6 +117,31 @@ if (!home.includes('giannis.papathanasiou.pth@gmail.com')) {
 	fail(path.join(distRoot, 'index.html'), 'permanent contact email is missing');
 }
 
+const exactPreprintTitle =
+	'Signed Sound-Speed Deformations of BSk24-Anchored Barotropes: Neutron-Star Response';
+for (const relative of [
+	'index.html',
+	'outputs/index.html',
+	'work/bsk24-sound-speed-deformations/index.html',
+]) {
+	const file = path.join(distRoot, relative);
+	const html = await readFile(file, 'utf8');
+	if (!html.includes(exactPreprintTitle)) fail(file, 'exact preprint title is missing');
+	if (!html.includes('2608.23033')) fail(file, 'arXiv identifier is missing');
+}
+
+for (const file of htmlFiles) {
+	const html = await readFile(file, 'utf8');
+	for (const [label, pattern] of [
+		['obsolete manuscript status', /manuscript (?:is )?in preparation|not yet been submitted|not submitted or posted as a preprint/i],
+		['held post-thesis repository', /github\.com\/PapathanasiouIoannis\/Bachelor_Thesis_Final_Version/i],
+		['held EoS-toolkit repository', /github\.com\/PapathanasiouIoannis\/neutron-star-eos-toolkit/i],
+		['postgraduate-application wording', /\b(?:MSc|master(?:'s)? degree) applications?\b/i],
+	]) {
+		if (pattern.test(html)) fail(file, `contains ${label}`);
+	}
+}
+
 if (failures.length) {
 	console.error(failures.join('\n'));
 	process.exitCode = 1;

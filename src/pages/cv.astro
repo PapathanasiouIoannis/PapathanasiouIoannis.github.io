@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
+import { LIVE_APPS, PREPRINT, REPOSITORIES, SITE } from '../site';
 ---
 
 <BaseLayout
@@ -39,9 +39,9 @@ import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
 					provenance, and scientific scope.
 				</p>
 				<p>
-					Research and scientific-software work supervised by Charalampos Moustakidis and
-					Theodoros Diakonidis. Codex-assisted software development; scientific interpretation
-					and responsibility retained by Ioannis Papathanasiou.
+					Continued post-BSc research collaboration and guidance with Charalampos Moustakidis
+					and Theodoros Diakonidis; scientific interpretation and responsibility retained by
+					Ioannis Papathanasiou.
 				</p>
 			</div>
 		</section>
@@ -54,9 +54,9 @@ import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
 					<p class="cv-entry-meta">Methods and software · 2026–present</p>
 					<p>
 						Developed a fail-closed workflow for smooth sound-speed modifications, effective
-						cold-barotrope reconstruction, and optional TOV/tidal calculations. Released
-						versioned software and checksummed campaign evidence; related manuscript in
-						preparation.
+						cold-barotrope reconstruction, and TOV/tidal response calculations. Released
+						versioned software and checksum-verified campaign evidence; sole-authored public
+						arXiv preprint {PREPRINT.identifier}.
 					</p>
 				</article>
 				<article class="cv-entry">
@@ -82,6 +82,21 @@ import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
 			</div>
 		</section>
 
+		<section class="cv-section" aria-labelledby="cv-preprints">
+			<h2 id="cv-preprints">Preprints</h2>
+			<div class="cv-entry">
+				<h3><a href={PREPRINT.record}>{PREPRINT.title}</a></h3>
+				<p class="cv-entry-meta">
+					Ioannis Papathanasiou (sole author) · {PREPRINT.identifier} [{PREPRINT.primaryCategory}]
+					· 2026
+				</p>
+				<p>
+					Submitted 2026-08-24; cross-listed in {PREPRINT.crossList}. Public arXiv preprint,
+					not peer reviewed or journal published; no journal submission is planned.
+				</p>
+			</div>
+		</section>
+
 		<section class="cv-section" aria-labelledby="cv-software">
 			<h2 id="cv-software">Selected software</h2>
 			<div>
@@ -90,8 +105,8 @@ import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
 					<p>Developer and maintainer · Python · MIT licensed.</p>
 				</article>
 				<article class="cv-entry">
-					<h3><a href={REPOSITORIES.eosToolkit}>Neutron-star EoS toolkit</a></h3>
-					<p>Early-stage scientific software · Python · MIT licensed · no formal release.</p>
+					<h3>Neutron-star EoS toolkit</h3>
+					<p>Audited alpha development work · Python · no formal release.</p>
 				</article>
 				<article class="cv-entry">
 					<h3>Interactive compact-star classifier demonstrations</h3>
@@ -111,8 +126,8 @@ import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
 				<p class="cv-entry-meta">2021–2026 · 240 ECTS · 8.46/10 (“Very Good”)</p>
 				<p>
 					Undergraduate thesis: <em>Machine Learning Classification of Neutron Star Composition</em>
-					(10/10). Supervisors: Charalampos Moustakidis and Theodoros Diakonidis. Examining
-					committee: Charalampos Moustakidis, Theodoros Diakonidis, and Theodoros Gaitanos.
+					(10/10). Official examiners: Charalampos Moustakidis, Theodoros Diakonidis, and
+					Theodoros Gaitanos.
 				</p>
 			</div>
 		</section>
@@ -125,7 +140,7 @@ import { LIVE_APPS, REPOSITORIES, SITE } from '../site';
 					supervised learning with grouped validation; reproducible workflows and provenance.
 				</p>
 				<p>
-					Python, NumPy, SciPy, pandas, scikit-learn, Jupyter, pytest, Git, and LaTeX.
+					Python, NumPy, SciPy, pandas, scikit-learn, Jupyter, Git, and LaTeX.
 				</p>
 			</div>
 		</section>

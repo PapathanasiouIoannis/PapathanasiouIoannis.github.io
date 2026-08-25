@@ -3,7 +3,7 @@ title: Compact-star model discrimination with machine learning
 shortTitle: Compact-star model discrimination
 description: An undergraduate synthetic study of hadronic-star and self-bound strange-quark-star model discrimination, followed by a stricter audit of what the classifier can support.
 eyebrow: Undergraduate thesis
-status: Thesis examined in 2026; post-thesis methodological audit available
+status: Thesis examined in 2026; distinct post-thesis redevelopment documented
 period: '2026'
 order: 2
 featured: true
@@ -13,17 +13,7 @@ tags:
   - Stellar structure
   - Machine learning
   - Validation
-links:
-  - label: Post-thesis redevelopment repository
-    href: https://github.com/PapathanasiouIoannis/Bachelor_Thesis_Final_Version
-  - label: Later historical code snapshot
-    href: https://github.com/PapathanasiouIoannis/Bachelor_Thesis_Final_Version/tree/thesis-submitted-v1
-  - label: Classification risk audit
-    href: https://github.com/PapathanasiouIoannis/Bachelor_Thesis_Final_Version/blob/main/docs/CLASSIFICATION_RISK_AUDIT.md
-  - label: Live demonstration overview
-    href: https://papathanasiouioannis.github.io/apps/
-  - label: Thesis record
-    href: https://www.researchgate.net/publication/400555533_Machine_Learning_Classification_of_Neutron_Star_Composition
+links: []
 ---
 
 ## The question
@@ -36,15 +26,15 @@ The classifier was a probe of a defined synthetic distinction, not the scientifi
 
 ## Work completed
 
-Under the supervision of Charalampos Moustakidis and Theodoros Diakonidis, I built an end-to-end computational workflow for equation-of-state ensembles, TOV and tidal calculations, feature construction, Random Forest classification, and grouped validation. The thesis was examined in February 2026 as *Machine Learning Classification of Neutron Star Composition* and received 10/10. The examining committee comprised Charalampos Moustakidis, Theodoros Diakonidis, and Theodoros Gaitanos.
+For the thesis-era study, I investigated restricted synthetic compact-star model discrimination using equation-of-state generation, TOV and tidal calculations, and Random Forest models. I developed computational components for the equation-of-state and stellar calculations used in that workflow. The thesis was examined on 2026-02-18 as *Machine Learning Classification of Neutron Star Composition*, carried 8 ECTS, and received 10/10. The official examiners were Charalampos Moustakidis, Theodoros Diakonidis, and Theodoros Gaitanos.
 
-The repository and its `thesis-submitted-v1` tag were created after the examination. The tag is a later historical code snapshot associated with the thesis-era workflow; it is not verified as the exact examined code package and does not contain the official thesis document.
+The examined undergraduate thesis and the later public redevelopment are distinct works. The post-thesis repository was created after the examination, does not contain the official examined thesis PDF, and is not linked here while its public scope, provenance, licensing, and contribution boundaries remain under review.
 
 ## Separate post-thesis redevelopment
 
 The current repository contains substantial later audit and redevelopment work. It adds stricter configuration and artifact controls, physical-family partitioning, and explicit interpretation limits. It should be read as a post-thesis research-software record—not as a frozen copy of the examined thesis.
 
-This redevelopment was completed under the supervision of Charalampos Moustakidis and Theodoros Diakonidis. Codex assisted with software development; scientific interpretation and responsibility remain with me.
+This later work is a methodological redevelopment, not a thesis publication or a frozen copy of the examined thesis. Direct repository and audit links are intentionally omitted from this public portfolio pending a bounded public-scope review.
 
 ## What the later audit changed
 
@@ -62,6 +52,6 @@ The audit is part of the scientific record: it identifies which conclusions surv
 
 ## Interactive demonstrations
 
-Two lasting public applications provide interactive views of retained classifier artifacts: a [baseline synthetic-classifier demonstration](https://eoslab-clean-inference.streamlit.app/) and a [perturbation-sensitivity demonstration](https://eoslab-perturbed-inference.streamlit.app/). They are independent post-thesis extensions, not thesis-submission artifacts or observational inference services.
+Two public applications provide interactive views of retained classifier artifacts: a [baseline synthetic-classifier demonstration](https://eoslab-clean-inference.streamlit.app/) and a [perturbation-sensitivity demonstration](https://eoslab-perturbed-inference.streamlit.app/). They are independent post-thesis extensions, not thesis-submission artifacts, products of the BSk24 preprint, or observational inference services.
 
 Their displayed values are uncalibrated model scores from restricted synthetic comparisons. They are not composition probabilities, observational measurements, or posterior statements about real stars. The [live-app overview](/apps/) records the assumptions, development boundary, and wake-time note before launch.

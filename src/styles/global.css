@@ -285,6 +285,43 @@ main {
 	line-height: 1.62;
 }
 
+.hero-preprint {
+	max-width: 64ch;
+	margin-top: 1.5rem;
+	padding: 1rem 1.1rem;
+	border: 1px solid var(--line-strong);
+	border-left: 3px solid var(--teal);
+	background: rgb(251 249 244 / 0.72);
+}
+
+.hero-preprint-label {
+	color: var(--teal-dark);
+	font-size: 0.72rem;
+	font-weight: 850;
+	letter-spacing: 0.11em;
+	text-transform: uppercase;
+}
+
+.hero-preprint-title {
+	margin-top: 0.4rem;
+	font-family: var(--serif);
+	font-size: clamp(1.05rem, 1.8vw, 1.32rem);
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.hero-preprint-meta {
+	margin-top: 0.35rem;
+	color: var(--ink-soft);
+	font-size: 0.78rem;
+}
+
+.hero-preprint .text-link {
+	min-height: 2.5rem;
+	margin-top: 0.35rem;
+	font-size: 0.88rem;
+}
+
 .hero-focus {
 	max-width: 62ch;
 	margin-top: 1.15rem;
@@ -834,6 +871,11 @@ main {
 	font-size: clamp(2.7rem, 7vw, 5.6rem);
 }
 
+.project-hero--preprint h1 {
+	max-width: 22ch;
+	font-size: clamp(2.55rem, 5.4vw, 4.65rem);
+}
+
 .project-deck {
 	max-width: 70ch;
 	margin-top: 1.75rem;
@@ -875,6 +917,14 @@ main {
 	gap: clamp(2rem, 7vw, 7rem);
 	padding-block: clamp(3.5rem, 8vw, 7rem);
 	border-top: 1px solid var(--line);
+}
+
+.project-body--without-links {
+	display: block;
+}
+
+.project-body--without-links .prose {
+	margin-inline: auto;
 }
 
 .visual-story {
@@ -1214,6 +1264,21 @@ main {
 	color: var(--ink-soft);
 }
 
+.output-item--preprint {
+	border-top: 3px solid var(--teal);
+}
+
+.output-citation {
+	color: var(--ink) !important;
+	font-weight: 680;
+}
+
+.output-note {
+	padding-left: 0.85rem;
+	border-left: 2px solid var(--rust);
+	font-size: 0.9rem;
+}
+
 .about-grid {
 	display: grid;
 	grid-template-columns: minmax(16rem, 0.37fr) minmax(0, 0.63fr);
@@ -1462,12 +1527,14 @@ main {
 
 	.site-nav {
 		width: 100%;
-		overflow-x: auto;
+		overflow: visible;
 	}
 
 	.site-nav ul {
-		justify-content: space-between;
-		min-width: max-content;
+		justify-content: flex-start;
+		min-width: 0;
+		flex-wrap: wrap;
+		gap: 0.15rem 0.55rem;
 	}
 
 	.site-nav a {

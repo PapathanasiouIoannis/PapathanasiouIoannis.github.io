@@ -12,6 +12,7 @@ interface Props {
 	ogImageAlt?: string;
 	ogImageWidth?: number;
 	ogImageHeight?: number;
+	ogType?: 'website' | 'article';
 	noindex?: boolean;
 	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -24,6 +25,7 @@ const {
 	ogImageAlt,
 	ogImageWidth = 1200,
 	ogImageHeight = 630,
+	ogType = 'website',
 	noindex = false,
 	jsonLd,
 } = Astro.props;
@@ -50,7 +52,7 @@ const structuredData = jsonLd
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="manifest" href="/site.webmanifest" />
 
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={ogType} />
 		<meta property="og:site_name" content={SITE.name} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />

@@ -14,10 +14,25 @@ export const SITE = {
 export const NAV_ITEMS = [
 	{ href: '/work/', label: 'Work' },
 	{ href: '/apps/', label: 'Live Apps' },
-	{ href: '/outputs/', label: 'Outputs' },
+	{ href: '/outputs/', label: 'Research Outputs' },
 	{ href: '/about/', label: 'About' },
 	{ href: '/cv/', label: 'CV' },
 ] as const;
+
+export const PREPRINT = {
+	title:
+		'Signed Sound-Speed Deformations of BSk24-Anchored Barotropes: Neutron-Star Response',
+	author: 'Ioannis Papathanasiou',
+	identifier: 'arXiv:2608.23033v1',
+	primaryCategory: 'nucl-th',
+	crossList: 'astro-ph.HE',
+	submitted: '2026-08-24',
+	record: 'https://arxiv.org/abs/2608.23033v1',
+	pdf: 'https://arxiv.org/pdf/2608.23033v1',
+	bibtex: 'https://arxiv.org/bibtex/2608.23033',
+	affiliation:
+		'Department of Theoretical Physics, School of Physics, Aristotle University of Thessaloniki, 54124 Thessaloniki, Greece',
+} as const;
 
 export const REPOSITORIES = {
 	eosGeneration: 'https://github.com/PapathanasiouIoannis/EoS-generation',
@@ -25,14 +40,6 @@ export const REPOSITORIES = {
 		'https://github.com/PapathanasiouIoannis/EoS-generation/releases/tag/v1.0.0',
 	eosCampaignRelease:
 		'https://github.com/PapathanasiouIoannis/EoS-generation/releases/tag/bsk24-campaign-data-v1.0.0',
-	thesis: 'https://github.com/PapathanasiouIoannis/Bachelor_Thesis_Final_Version',
-	thesisSnapshot:
-		'https://github.com/PapathanasiouIoannis/Bachelor_Thesis_Final_Version/tree/thesis-submitted-v1',
-	thesisAudit:
-		'https://github.com/PapathanasiouIoannis/Bachelor_Thesis_Final_Version/blob/main/docs/CLASSIFICATION_RISK_AUDIT.md',
-	thesisRecord:
-		'https://www.researchgate.net/publication/400555533_Machine_Learning_Classification_of_Neutron_Star_Composition',
-	eosToolkit: 'https://github.com/PapathanasiouIoannis/neutron-star-eos-toolkit',
 } as const;
 
 export const LIVE_APPS = {

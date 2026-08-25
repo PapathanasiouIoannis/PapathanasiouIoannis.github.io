@@ -1,7 +1,7 @@
 # Ioannis Papathanasiou — scientific portfolio
 
-A small, static Astro site presenting selected research, scientific software, public outputs,
-education, and a print-ready HTML CV.
+A small, static Astro site presenting a public arXiv preprint, selected research, scientific
+software, public outputs, education, and a print-ready HTML CV.
 
 ## Editorial scope
 
@@ -9,6 +9,9 @@ The site is evidence-led and intentionally selective. Content lives in `src/cont
 must distinguish a demonstrated result from an inference, present status, and a scientific
 limitation. Do not add private thesis drafts, diploma records, raw result packets, unpublished
 manuscripts, or generated campaign outputs to this repository.
+
+Repository links that are intentionally withheld for provenance, licensing, privacy, affiliation,
+or contribution-boundary review must not be reintroduced without a separate factual review.
 
 ## Local development
 
